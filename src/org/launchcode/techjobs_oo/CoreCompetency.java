@@ -44,11 +44,7 @@ public class CoreCompetency {
         return value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+    public void setValue(String value) { this.value = value; }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 }
