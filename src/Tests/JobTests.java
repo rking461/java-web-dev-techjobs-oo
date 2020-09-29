@@ -43,5 +43,16 @@ public class JobTests {
        assertTrue("Set Core Competency", productTester.getCoreCompetency() instanceof CoreCompetency);
        assertEquals("Persistence", productTester.getCoreCompetency().getValue());
     }
+    @Test
+    public void testJobsForEquality(){
+        Employer acme = new Employer("ACME");
+        Location desert = new Location("Desert");
+        PositionType quality_control = new PositionType("Quality control");
+        CoreCompetency persistence = new CoreCompetency("Persistence");
+
+        Job productTester = new Job("Product tester", acme, desert, quality_control, persistence);
+        Job productTester2 = new Job("Product tester", acme, desert, quality_control, persistence);
+        assertFalse("Must have different Ids", productTester.equals(productTester2));
+    }
 
 }
