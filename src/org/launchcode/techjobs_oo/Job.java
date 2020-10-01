@@ -6,7 +6,6 @@ public class Job {
 
     private int id;
     private static int nextId = 1;
-
     private String name;
     private Employer employer;
     private Location location;
@@ -29,11 +28,25 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
-    //public Job(int id, String program_manger, String deieterich_bank, String columbia_il, String entry_level, String s) {
-    //}
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+
+//    @Override public String toString() {
+//        StringBuilder result = new StringBuilder();
+//        String NL = System.getProperty("line.separator");
+//
+//        result.append(this.getClass().getName() + " Object {" + NL);
+//        result.append("ID:_"+ id + NL+"_");
+//        result.append("Name:_" + name + NL +"_");
+//        result.append("Employer:_" + employer + NL +"_");
+//        result.append("Location:_" + location + NL+"_");
+//        result.append("Position Type:_" + positionType + NL+"_");
+//        result.append("Core Competency:_" + coreCompetency + NL+"_");
+//        result.append("}");
+//
+//        return result.toString();
+//    }
 
     @Override
     public boolean equals(Object o) {
