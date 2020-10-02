@@ -1,5 +1,6 @@
 package Tests;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
@@ -11,6 +12,7 @@ public class JobTests {
 
     private Job one;
     private Job two;
+    private Job three;
     private Employer employer;
     private Location location;
     private PositionType positionType;
@@ -29,49 +31,44 @@ public class JobTests {
 
     @Test
     public void testSettingJobId() {
-
-        assertEquals(1,one.getId());
-        assertEquals(2,two.getId());
+        assertEquals(1, two.getId() - one.getId());
     }
-    @Test
-    public void testJobConstructorSetsAllFields(){
 
+    @Test
+    public void testJobConstructorSetsAllFields() {
+        three = new Job("Product tester", employer, location, positionType, coreCompetency);
+
+        assertEquals("Product tester", three.getName());
+        assertTrue("Set Employer", three.getEmployer() instanceof Employer);
+        assertEquals("ACME", three.getEmployer().getValue());
+        assertTrue("Set Location", three.getLocation() instanceof Location);
+        assertEquals("Desert", three.getLocation().getValue());
+        assertTrue("Set Position Type", three.getPositionType() instanceof PositionType);
+        assertEquals("Quality control", three.getPositionType().getValue());
+        assertTrue("Set Core Competency", three.getCoreCompetency() instanceof CoreCompetency);
+        assertEquals("Persistence", three.getCoreCompetency().getValue());
+    }
+
+    @Test
+    public void testJobsForEquality() {
         one = new Job("Product tester", employer, location, positionType, coreCompetency);
-
-       assertEquals("Product tester", one.getName());
-       assertTrue("Set Employer", one.getEmployer() instanceof Employer);
-       assertEquals("ACME", one.getEmployer().getValue());
-       assertTrue("Set Location", one.getLocation() instanceof Location);
-       assertEquals("Desert", one.getLocation().getValue());
-       assertTrue("Set Position Type", one.getPositionType() instanceof PositionType);
-       assertEquals("Quality control", one.getPositionType().getValue());
-       assertTrue("Set Core Competency", one.getCoreCompetency() instanceof CoreCompetency);
-       assertEquals("Persistence", one.getCoreCompetency().getValue());
+        two = new Job("Product tester", employer, location, positionType, coreCompetency);
+        assertFalse("Must have different Ids", one.equals(two));
     }
     @Test
-    public void testJobsForEquality(){
-        Employer acme = new Employer("ACME");
-        Location desert = new Location("Desert");
-        PositionType quality_control = new PositionType("Quality control");
-        CoreCompetency persistence = new CoreCompetency("Persistence");
+    public void testToStringMethodForCorrectLabels(){
+        one = new Job("Product tester", employer, location, positionType, coreCompetency);
+        String NL = System.getProperty("line.separator");
+        String[] lines = one.toString().split(NL);
 
-        Job productTester = new Job("Product tester", acme, desert, quality_control, persistence);
-        Job productTester2 = new Job("Product tester", acme, desert, quality_control, persistence);
-        assertFalse("Must have different Ids", productTester.equals(productTester2));
+        assertEquals(lines[0], "ID: "+ one.getId());
+        assertEquals(lines[1], "Name: "+ one.getName());
+        assertEquals(lines[2], "Employer: "+ one.getEmployer());
+        assertEquals(lines[3], "Location: "+ one.getLocation());
+        assertEquals(lines[4], "Position Type: "+ one.getPositionType());
+        assertEquals(lines[5], "Core Competency: "+ one.getCoreCompetency());
+
     }
-//    @Test
-//    public void testToStringMethodForCorrectLables(){
-//        Employer acme = new Employer("ACME");
-//        Location desert = new Location("Desert");
-//        PositionType quality_control = new PositionType("Quality control");
-//        CoreCompetency persistence = new CoreCompetency("Persistence");
-//
-//        Job productTester = new Job("Product tester", acme, desert, quality_control, persistence);
-//        Job one = new Job();
-//        System.out.println(one);
-
-
-    //}
 
 
 }

@@ -32,24 +32,22 @@ public class Job {
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
-//    @Override public String toString() {
-//        StringBuilder result = new StringBuilder();
-//        String NL = System.getProperty("line.separator");
-//
-//        result.append(this.getClass().getName() + " Object {" + NL);
-//        result.append("ID:_"+ id + NL+"_");
-//        result.append("Name:_" + name + NL +"_");
-//        result.append("Employer:_" + employer + NL +"_");
-//        result.append("Location:_" + location + NL+"_");
-//        result.append("Position Type:_" + positionType + NL+"_");
-//        result.append("Core Competency:_" + coreCompetency + NL+"_");
-//        result.append("}");
-//
-//        return result.toString();
-//    }
+    @Override public String toString() {
+        StringBuilder result = new StringBuilder();
+        String NL = System.getProperty("line.separator");
+
+        result.append("ID: "+ id + NL+"");
+        result.append("Name: " + name + NL +"");
+        result.append("Employer: " + employer + NL +"");
+        result.append("Location: " + location + NL+"");
+        result.append("Position Type: " + positionType + NL+"");
+        result.append("Core Competency: " + coreCompetency + NL+"");
+
+        return result.toString();
+    }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals (Object o) {
         if (this == o) return true;
         if (!(o instanceof Job)) return false;
         Job that = (Job) o;
