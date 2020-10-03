@@ -67,8 +67,5 @@ public class JobTests {
         assertEquals(lines[3], "Location: "+ one.getLocation());
         assertEquals(lines[4], "Position Type: "+ one.getPositionType());
         assertEquals(lines[5], "Core Competency: "+ one.getCoreCompetency());
-
     }
-
-
 }
